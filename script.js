@@ -1,9 +1,9 @@
 function run() {
     // for the initial run 
     const colorInputOne = document.getElementById("color1");
-    console.log(colorInputOne)
     const colorInputTwo = document.getElementById("color2");
     const paletteCount = document.getElementById("palette-count-input");
+    console.log(paletteCount);
 
     
     [colorInputOne, colorInputTwo, paletteCount].forEach((colorInput) => {
@@ -22,8 +22,12 @@ function generatePalette(color1, color2, paletteCount) {
     const paletteContainer = document.getElementById("palette");
     // Remove all child nodes and append new nodes
     paletteContainer.innerHTML = "";
+    // Add target to print palette values
+    const paletteList = document.getElementById('list');
+    paletteList.innerHTML = "";
+    
+    const colorPalette = chroma.scale([color1, color2]).mode("oklch").colors(paletteCount);
 
-    const colorPalette = chroma.scale([color1, color2]).node("lch").colors(paletteCount);
 
 
 //Array of colors
@@ -32,17 +36,24 @@ colorPalette.forEach(colorPalette => {
 // Create a SPAN and append to the palette item div
 const paletteColorValue = document.createElement("span");
 paletteColorValue.classList.add("palette-color-value");
-paletteColorValue.style.setProperty("--name-color", chroma.contrast(colorPalette.chroma(colorPalette).darken(3)) > 2 ? chroma(colorPaletter).darken(3) : chroma(colorPalette).luminance(3)
+
+paletteColorValue.style.setProperty("--name-color", chroma.contrast(colorPalette, chroma(colorPalette).darken(3)) > 2 
+? chroma(colorPalette).darken(3) 
+: chroma(colorPalette).luminance(3)
 );
+console.log(colorPalette);
 
-paletteColorValue.appendChile(document.createTextNode(colorPaletter));
+const myTextNode = document.createTextNode(colorPalette);
 
-paletteItem.appendChiled(paletteColorValue);
+paletteColorValue.appendChild(document.createTextNode(colorPalette));
 
+paletteItem.appendChild(paletteColorValue);
     paletteItem.classList.add("palette-item");
     paletteItem.style.setProperty("--palette-color",colorPalette);
 
+
     paletteContainer.appendChild(paletteItem);
+
 });
 }
 

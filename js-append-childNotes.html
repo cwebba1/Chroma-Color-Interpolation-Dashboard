@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-append-childNotes</title>
+</head>
+<body>
+<main>
+<h1>JS append childNotes</h1>
+<h2>Append multiple elements at once using append() - JavaScript DOM Tutorial</h2>
+<p>
+Dom (dcode) 
+Posted on Aug 17, 2020<br>
+<a href="https://dev.to/dcodeyt/append-multiple-elements-using-append-302h">https://dev.to/dcodeyt/append-multiple-elements-using-append-302h</a><br>
+<a href='https://www.youtube.com/watch?v=XMjs2jQ9SXU'>https://www.youtube.com/watch?v=XMjs2jQ9SXU</a></p>
+<div id="myDiv">
+
+</div>
+
+</main>
+    <script>
+const myDiv = document.getElementById('myDiv');
+
+const strong = document.createElement('strong');
+const em = document.createElement('em');
+const myTextNode = document.createTextNode('This is a TextNode Message. ');
+
+strong.textContent = "strong ";
+em.textContent = "emphasized ";
+
+myDiv.append(strong, em, myTextNode, 'Add this as well');
+
+    </script>
+</body>
+</html>
